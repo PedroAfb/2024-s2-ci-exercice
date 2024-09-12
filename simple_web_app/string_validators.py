@@ -54,7 +54,11 @@ class LowerCaseValidator(Validator):
 
 class EspecialCharacterValidator(Validator):
     def __init__(self):
-        self.especial_set = set(punctuation)
+        especial_set = set(punctuation)
+        especial_set.discard("^")
+        especial_set.discard("/")
+        especial_set.discard("~")
+        self.especial_set = especial_set
 
     def validate(self, content):
         content_set = set(content)
